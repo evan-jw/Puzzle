@@ -31,3 +31,24 @@
 .puzzle-section{
 	margin-top:80px;
 }
+
+.puzzle-left-section{
+	@include make-xs-column(12);
+	@include make-sm-column(2);
+	@include make-md-column(2);
+	@include make-lg-column(2);
+}
+
+.puzzle-right-section{
+	@include make-xs-column(12);
+	@include make-sm-column(10);
+	@include make-md-column(10);
+	@include make-lg-column(10);
+	margin-bottom:$default-margin;
+}
+
+@media (max-width: $screen-sm) {
+	.puzzle-right-section, .puzzle-section{
+		margin-top:$default-margin;
+	}
+}
