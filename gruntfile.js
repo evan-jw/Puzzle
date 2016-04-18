@@ -9,6 +9,7 @@ module.exports = function(grunt) {
 					'js/lib/Angular/*.js', 
 					'js/lib/JqueryUI/*.js',
 					'js/Controller/*.js',
+					'js/Directive/**/*.js',
 					'js/AngularApp.js',
 					'js/Init.js'
 				],
@@ -60,7 +61,7 @@ module.exports = function(grunt) {
 		},
 		watch: {
 			scripts: {
-				files: ['js/*.js','scss/*.scss'],
+				files: ['js/**/*.js','scss/**/*.scss'],
 				tasks: ['concat', 'uglify','sass','cssmin'],
 				options: {
 					spawn: false,

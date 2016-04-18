@@ -1,0 +1,20 @@
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	border-radius: $radius;
+}
+
+@mixin box-shadow($h-shadow,$v-shadow,$blur,$color ){
+	-webkit-box-shadow: $h-shadow $v-shadow $blur $color;
+	-moz-box-shadow: $h-shadow $v-shadow $blur $color;
+	box-shadow: $h-shadow $v-shadow $blur $color;
+}
+
+@mixin btn-gradient($top-btn-color, $btm-btn-color){
+	background-image: -webkit-linear-gradient(top, $top-btn-color, $btm-btn-color);
+	background-image: -moz-linear-gradient(top, $top-btn-color, $btm-btn-color);
+	background-image: -ms-linear-gradient(top, $top-btn-color, $btm-btn-color);
+	background-image: -o-linear-gradient(top, $top-btn-color, $btm-btn-color);
+	background-image: linear-gradient(to bottom, $top-btn-color, $btm-btn-color);
+}

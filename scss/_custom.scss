@@ -1,0 +1,33 @@
+.btn-custom{
+    text-align: center;
+	cursor:pointer;
+	background: $top-btn-color;
+	@include btn-gradient($top-btn-color, $btm-btn-color);
+	@include border-radius(10px);
+	@include box-shadow(0px, 1px, 3px, #666666);
+	color: #ffffff;
+	padding: 10px 20px 10px 20px;
+	text-decoration: none;
+	margin-top:25px;
+	&:hover{
+		background: $top-btn-color-hover;
+		@include btn-gradient($top-btn-color-hover, $btm-btn-color-hover);
+		text-decoration: none;
+	}
+}
+
+.container{
+	margin-top: 40px;
+}
+
+.hidden-msg{
+	height: $hidden-msg-height;
+	background-color:$default-blue;
+	color: $white;
+	text-align: center;
+    padding-top: 38px;
+}
+
+.puzzle-section{
+	margin-top:80px;
+}

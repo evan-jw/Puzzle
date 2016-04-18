@@ -5,7 +5,28 @@
 <link href="../css/main.min.css" rel="stylesheet">
 </head>
 <body ng-controller="PuzzleController">
-	<div class="col-lg-5" id="draggable" style="border:1px solid black;">An element</div>
+	<!--div class="col-lg-5" id="draggable" style="border:1px solid black;">An element</div-->
+	<div class="hidden-msg">Congratulations! You solved the puzzle in a total of x move </div>
+	<div class="container">
+		<div class="col-lg-12">Drag and drop the images on the right to match the given image</div>
+		<div class="puzzle-section">
+			<div class="col-lg-2">
+				<div>
+					<img src="./img/isentia.jpg" alt="Isentia" class="img-responsive center-block">
+				</div>
+				<div>
+					<div class="btn-custom">Start Game</div>
+				</div>
+			</div>
+			
+			<div class="col-lg-10">
+				<div>
+					<img src="./img/isentia.jpg" alt="Isentia" class="img-responsive center-block">
+				</div>
+			</div>
+		</div>
+	</div>
+	
 <script src="../js/build/production.min.js"></script>
 </body>
 </html>
