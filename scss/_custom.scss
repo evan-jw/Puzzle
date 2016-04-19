@@ -29,7 +29,7 @@
 }
 
 .puzzle-section{
-	margin-top:80px;
+	margin-top:60px;
 }
 
 .puzzle-left-section{
@@ -45,6 +45,30 @@
 	@include make-md-column(10);
 	@include make-lg-column(10);
 	margin-bottom:$default-margin;
+	
+	#puzzle-picture-container{
+		width:400px;
+	}
+}
+
+.tile { 
+    float: left;
+    -webkit-transition: all .1s linear;
+    -moz-transition: all .1s linear;
+    -ms-transition: all .1s linear;
+    -o-transition: all .1s linear;
+	&:hover{
+		opacity: .7; 
+	}
+}
+
+.wrapper-center{
+	position: absolute;
+    left: 50%;
+	.centered{
+		position: relative;
+		left: -50%;
+	}
 }
 
 @media (max-width: $screen-sm) {
