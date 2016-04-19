@@ -17,6 +17,9 @@ module.exports = function(grunt) {
 			}
         },
 		uglify: {
+			options: {
+				mangle: false
+			},
 			build: {
 				src: 'js/build/production.js',
 				dest: 'js/build/production.min.js'

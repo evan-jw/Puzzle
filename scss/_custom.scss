@@ -72,6 +72,10 @@
 	}
 }
 
+.over {
+  background: red;
+}
+
 @media (max-width: $screen-sm) {
 	.puzzle-right-section, .puzzle-section{
 		margin-top:$default-margin;
