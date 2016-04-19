@@ -25,7 +25,7 @@
 	background-color:$default-blue;
 	color: $white;
 	text-align: center;
-    padding-top: 38px;
+    padding-top: 30px;
 }
 
 .puzzle-section{
@@ -48,6 +48,7 @@
 	
 	#puzzle-picture-container{
 		width:400px;
+		display: inline-block;
 	}
 }
 
