@@ -10,10 +10,9 @@ var app = angular.module('puzzle-app',[]);
 // Directive for dragging
 app.directive('draggable', [function() {
 	return function(scope, element) {
+		// get the element
 		var el = element[0];
-
 		el.draggable = true;
-
 		el.addEventListener(
 			'dragstart',
 			function(e) {
@@ -41,8 +40,7 @@ app.directive('draggable', [function() {
 app.directive('droppable', ['$timeout', function($timeout) {
 	return {
 		link: function(scope, element, attrs) {
-			
-			// again we need the native object
+			// get the element
 			var el = element[0];
 		  
 			el.addEventListener(
@@ -79,11 +77,17 @@ app.directive('droppable', ['$timeout', function($timeout) {
 				'drop',
 				function(e) {
 					$(this).find('.sub-tile').removeClass('over');
+					
+					if(scope.winningFlag === 1){
+						// game already ended
+						return false;
+					}
 					var originTruthIndex = e.dataTransfer.getData('Text');
 					var targetIndex = $(e.currentTarget).attr('truth-index');
+					
 					// If source and target is the same, then do nothing. The puzzle piece does not move
 					// Otherwise, swap puzzle piece and increment the total move
-					if( originTruthIndex!=targetIndex ){
+					if( originTruthIndex !== targetIndex ){
 						// Get sub-tile of origin
 						var subTileOrigin = $('[truth-index="' + originTruthIndex + '"]').find('.sub-tile');
 						
@@ -102,6 +106,25 @@ app.directive('droppable', ['$timeout', function($timeout) {
 								scope.totalMove += 1;
 						});
 						
+						// Check if the game is completed
+						var len = $('.parent-tile').length;
+						$('.parent-tile').each(function(index,value){
+							var parentIndex = $(value).attr('truth-index');
+							var subTileIndex = $(value).find('.sub-tile').attr('index');
+							
+							if(parentIndex !== subTileIndex)
+								return false; // game is not completed yet
+							
+							if(index === len-1)
+							{
+								// Game completed!
+								// Show the winning banner
+								$('#banner-win').removeClass('hide');
+								scope.$apply(function(){
+									scope.winningFlag = 1;
+								});
+							}
+						});
 					}
 					return false;
 				},

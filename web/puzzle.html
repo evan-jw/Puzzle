@@ -6,13 +6,16 @@
 </head>
 <body ng-controller="PuzzleController">
 	<!--div class="col-lg-5" id="draggable" style="border:1px solid black;">An element</div-->
-	<div class="hidden-msg">Congratulations! You solved the puzzle in a total of {{totalMove}} move </div>
+	<div id="banner-win" class="hidden-msg hide">
+		<p>Congratulations! You solved the puzzle in a total of {{totalMove}} move</p>
+		<p>Press 'Start Game' to play again!</p>
+	</div>
 	<div class="container">
 		<div class="col-lg-12">Drag and drop the images on the right to match the given image</div>
 		<div class="puzzle-section">
 			<div class="puzzle-left-section">
 				<div>
-					<img id="originalImg" src="./img/isentia.jpg" alt="Isentia" class="img-responsive center-block">
+					<img src="./img/isentia.jpg" alt="Isentia" class="img-responsive center-block">
 				</div>
 				<div>
 					<div class="btn-custom" ng-click="startGame()">Start Game</div>
@@ -21,11 +24,11 @@
 			
 			<div class="puzzle-right-section">
 				<div class="wrapper-center">
-					<div id="puzzle-picture-container" class="centered">
-						<img src="./img/isentia.jpg" alt="Isentia">
+					<div id="puzzle-picture-container">
+						<img id="originalImg" src="./img/isentia.jpg" alt="Isentia">
 					</div>
-					<div>
-						Total Move: <span id="movementTotal">{{totalMove}}</span>
+					<div class="sub-text-style">
+						Total Moves: {{totalMove}}
 					</div>
 				</div>
 				
