@@ -38,13 +38,10 @@ app.directive('draggable', [function() {
 }]);
 
 // Directive for dropping
-app.directive('droppable', [function() {
+app.directive('droppable', ['$timeout', function($timeout) {
 	return {
-		scope: {
-			drop: '&',
-			bin: '='
-		},
-		link: function(scope, element) {
+		link: function(scope, element, attrs) {
+			
 			// again we need the native object
 			var el = element[0];
 		  
@@ -54,7 +51,7 @@ app.directive('droppable', [function() {
 					e.dataTransfer.dropEffect = 'move';
 					// allows us to drop
 					if (e.preventDefault) e.preventDefault();
-					this.classList.add('over');
+					$(this).find('.sub-tile').addClass('over');
 					return false;
 				},
 				false
@@ -63,8 +60,8 @@ app.directive('droppable', [function() {
 			el.addEventListener(
 				'dragenter',
 				function(e) {
-				  this.classList.add('over');
-				  return false;
+				    $(this).find('.sub-tile').addClass('over');
+				    return false;
 				},
 				false
 			);
@@ -72,8 +69,8 @@ app.directive('droppable', [function() {
 			el.addEventListener(
 				'dragleave',
 				function(e) {
-				  this.classList.remove('over');
-				  return false;
+					$(this).find('.sub-tile').removeClass('over');
+				    return false;
 				},
 				false
 			);
@@ -81,7 +78,7 @@ app.directive('droppable', [function() {
 			el.addEventListener(
 				'drop',
 				function(e) {
-					this.classList.remove('over');
+					$(this).find('.sub-tile').removeClass('over');
 					var originTruthIndex = e.dataTransfer.getData('Text');
 					var targetIndex = $(e.currentTarget).attr('truth-index');
 					// If source and target is the same, then do nothing. The puzzle piece does not move
@@ -96,6 +93,15 @@ app.directive('droppable', [function() {
 						// Swap the sub-tiles
 						$('[truth-index="' + originTruthIndex + '"]').append(subTileTarget);
 						$('[truth-index="' + targetIndex + '"]').append(subTileOrigin);
+						
+						// Add total movement
+						scope.$apply(function(){
+							if(scope.totalMove === 0 )
+								scope.totalMove = 1;
+							else
+								scope.totalMove += 1;
+						});
+						
 					}
 					return false;
 				},

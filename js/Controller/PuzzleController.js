@@ -1,5 +1,7 @@
-var PuzzleController= function($scope){
+var PuzzleController= function($scope, $rootScope){
 	//$('#puzzle-picture').html('<span><b>TEST</b></span>');
+	
+	$scope.totalMove = 0;
 	
 	var settings = {
 		x : 3, // tiles in x axis
@@ -82,11 +84,16 @@ var PuzzleController= function($scope){
 	
 	$('#puzzle-picture-container').splitPicture();
 	
-	/*$( ".draggable" ).each(function(index,value){
-		$(value).draggable({ containment: "#puzzle-picture-container", scroll: false, snap: '.parent-tile' });
-	});*/
-	
-	$scope.testClick= function(){
-		console.log('a');
+	$scope.startGame = function(){
+		setTimeout(function() {
+			$scope.totalMove = 0;
+			$scope.$apply();
+		},0);
+		
+		$('.parent-tile').each(function(index,value){
+			$(value).remove();
+		});
+		$('#originalImg').show();
+		$('#puzzle-picture-container').splitPicture();
 	}
 }
