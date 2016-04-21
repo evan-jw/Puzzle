@@ -39,9 +39,10 @@ var PuzzleController= function($scope, $rootScope){
 				$scope.startTimer();
 		}else{
 			$scope.winningFlag = 0;
+			$scope.startTimer();
 		}
 	}
-	$scope.checkWinStatus();
+	
 		
 	if(localStorage.getItem("state") !== null){
 		$('#puzzle-picture-container').html(localStorage.getItem("state"));
@@ -55,12 +56,16 @@ var PuzzleController= function($scope, $rootScope){
 				$scope.$apply();
 			});
 		}, 0);
+		$scope.checkWinStatus();
 	}else{
 		// Split picture and shuffle it
 		$('#puzzle-picture-container').splitPicture();
 		
 		// Save puzzle board state after shuffling the board
-		localStorage.setItem("state", $('#puzzle-picture-container').html());		
+		localStorage.setItem("state", $('#puzzle-picture-container').html());
+		localStorage.setItem("totalMove", 0);
+		localStorage.setItem("time", 0);		
+		$scope.startTimer();
 	}
 	
 	$scope.startGame = function(){
