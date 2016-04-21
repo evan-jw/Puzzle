@@ -5,13 +5,13 @@ module.exports = function(grunt) {
 			dist: {
 				src: [
 					'js/lib/Jquery/*.js',
+					'js/Init.js',
 					'js/lib/Bootstrap/*.js',
-					'js/lib/Angular/*.js', 
+					'js/lib/Angular/angular.min.js', 
 					'js/lib/JqueryUI/*.js',
 					'js/Controller/*.js',
 					'js/Directive/**/*.js',
-					'js/AngularApp.js',
-					'js/Init.js'
+					'js/AngularApp.js'
 				],
 				dest: 'js/build/production.js',
 			}

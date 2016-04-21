@@ -1,6 +1,9 @@
 {
   "name": "puzzle-project",
   "version": "0.0.1",
+  "scripts": {
+    "test": "karma start karma.conf.js"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-compass": "^1.1.1",
@@ -9,6 +12,10 @@
     "grunt-contrib-imagemin": "^1.0.0",
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "^1.0.1",
-    "grunt-contrib-watch": "^1.0.0"
+    "grunt-contrib-watch": "^1.0.0",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-jasmine": "^0.3.8"
   }
 }
