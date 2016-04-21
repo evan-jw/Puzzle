@@ -79,7 +79,7 @@ app.directive('droppable', ['$timeout', function($timeout) {
 					$(this).find('.sub-tile').removeClass('over');
 					
 					if(scope.winningFlag === 1){
-						// game already ended
+						// Player already won the game, disable drop function
 						return false;
 					}
 					var originTruthIndex = e.dataTransfer.getData('Text');
@@ -106,6 +106,10 @@ app.directive('droppable', ['$timeout', function($timeout) {
 								scope.totalMove += 1;
 						});
 						
+						// Save the puzzle board state
+						localStorage.setItem("state", $('#puzzle-picture-container').html());
+						localStorage.setItem("totalMove", scope.totalMove);
+						
 						// Check if the game is completed
 						var len = $('.parent-tile').length;
 						$('.parent-tile').each(function(index,value){
@@ -122,6 +126,9 @@ app.directive('droppable', ['$timeout', function($timeout) {
 								$('#banner-win').removeClass('hide');
 								scope.$apply(function(){
 									scope.winningFlag = 1;
+									localStorage.setItem("winningFlag", scope.winningFlag);
+									// Stop the time tracker
+									clearInterval(scope.stopTimer()); 
 								});
 							}
 						});
